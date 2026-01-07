@@ -35,7 +35,7 @@ app.get("/:code", async (req, res) => {
     data: { clicks: { increment: 1 } },
   });
 
-  return res.redirect(url.originalUrl);
+  return res.redirect(url.longUrl);
 });
 
 /* -------------------- ERROR HANDLER -------------------- */

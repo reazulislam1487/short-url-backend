@@ -17,6 +17,11 @@ export const createShortUrl = async (userId: any, longUrl: string) => {
 
 export const getUserUrls = (userId: any) =>
   prisma.url.findMany({ where: { userId }, orderBy: { createdAt: "desc" } });
+export const getSingleUrl = async (shortCode: string) => {
+  return prisma.url.findUnique({
+    where: { shortCode },
+  });
+};
 
 export const deleteUrl = (id: any, userId: any) =>
   prisma.url.deleteMany({ where: { id, userId } });

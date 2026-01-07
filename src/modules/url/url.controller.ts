@@ -1,5 +1,10 @@
 import { Request, Response } from "express";
-import { createShortUrl, getUserUrls, deleteUrl } from "./url.service";
+import {
+  createShortUrl,
+  getUserUrls,
+  deleteUrl,
+  getSingleUrl,
+} from "./url.service";
 
 export const createUrl = async (req: any, res: Response) => {
   const url = await createShortUrl(req.userId, req.body.originalUrl);
@@ -8,6 +13,10 @@ export const createUrl = async (req: any, res: Response) => {
 
 export const listUrls = async (req: any, res: Response) => {
   const urls = await getUserUrls(req.userId);
+  res.json(urls);
+};
+export const singleUrl = async (req: any, res: Response) => {
+  const urls = await getSingleUrl(req.params.shortCode);
   res.json(urls);
 };
 
